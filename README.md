@@ -1,4 +1,4 @@
-# database monitoring on Docker
+# monitoring on Docker
 
 [![version](https://img.shields.io/badge/prometheus-latest-00bfb3?style=flat&logo=prometheus)](https://www.elastic.co/blog/category/releases)
 [![version](https://img.shields.io/badge/grafana-latest-00bfb3?style=flat&logo=grafana)](https://www.elastic.co/blog/category/releases)
@@ -36,7 +36,7 @@ By default, the stack exposes the following ports:
 Clone this repository onto the Docker host that will run the stack with the command below:
 
 ```sh
-git clone https://github.com/k4keye/docker-db-monitoring.git
+git clone https://github.com/k4keye/docker-monitoring.git
 ```
 
 Then, start the stack components locally with Docker Compose:
@@ -58,10 +58,22 @@ browser and use the following (default) credentials to log in:
 
 ### Cleanup
 
-Elasticsearch data is persisted inside a volume by default.
 
 In order to entirely shutdown the stack and remove all persisted data, use the following Docker Compose command:
 
 ```sh
 docker-compose down -v
 ```
+
+
+#Tools License
+
+- [grafana License - AGPL](https://hub.docker.com/r/prom/mysqld-exporter/)
+- [prometheus License - Apache 2.0](https://github.com/prometheus/prometheus/blob/main/LICENSE)
+- [mysqld_exporter License - Apache 2.0](https://github.com/prometheus/mysqld_exporter/blob/main/LICENSE)
+
+
+- [AGPL](https://sktelecom.github.io/guide/use/obligation/agpl-3.0/)
+- [Apache 2.0](https://sktelecom.github.io/guide/use/obligation/apache-2.0/)
+
+
