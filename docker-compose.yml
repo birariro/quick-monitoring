@@ -1,0 +1,59 @@
+version: '3.8'
+
+networks:
+  dm-net:
+    driver: bridge
+
+services:
+
+  db:
+    container_name: dm-db
+    image: mariadb:10.8.3
+    ports:
+      - "6633:6633"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_TCP_PORT: 6633
+    volumes:
+      - ./db/config/init.sql:/docker-entrypoint-initdb.d/init.sql
+    command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
+    networks:
+      - dm-net
+
+  db-exporter:
+    container_name: dm-db-exporter
+    build:
+      context: exporter/
+      args:
+        VERSION: ${EXPORTER_VERSION}
+    environment:
+      DATA_SOURCE_NAME: ${DB_MANAGER_ID}:${DB_MANAGER_PASSWORD}@(${DB_NAME}:${DB_PORT})/
+    ports:
+      - "9104:9104"
+    networks:
+      - dm-net
+
+  prometheus:
+    container_name: dm-prometheus
+    build:
+      context: prometheus/
+      args:
+        VERSION: ${PROMETHEUS_VERSION}
+    ports:
+      - "9094:9090"
+    volumes:
+      - ./prometheus/config/prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+      - dm-net
+
+  grafana:
+    container_name: dm-grafana
+    build:
+      context: grafana/
+      args:
+        VERSION: ${GRAFANA_VERSION}
+    ports:
+      - "9095:3000"
+    networks:
+      - dm-net
