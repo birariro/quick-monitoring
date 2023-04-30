@@ -1,0 +1,3 @@
+ARG OPEN_SEARCH_VERSION
+
+FROM opensearchproject/opensearch-dashboards:${OPEN_SEARCH_VERSION}

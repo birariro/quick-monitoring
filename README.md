@@ -1,8 +1,8 @@
 # monitoring on Docker
 
-[![version](https://img.shields.io/badge/prometheus-latest-00bfb3?style=flat&logo=prometheus)](https://www.elastic.co/blog/category/releases)
-[![version](https://img.shields.io/badge/grafana-latest-00bfb3?style=flat&logo=grafana)](https://www.elastic.co/blog/category/releases)
-
+[![version](https://img.shields.io/badge/prometheus-latest-00bfb3?style=flat&logo=prometheus)](https://github.com/prometheus/prometheus)
+[![version](https://img.shields.io/badge/grafana-latest-00bfb3?style=flat&logo=grafana)](https://github.com/grafana/grafana)
+[![version](https://img.shields.io/badge/OpenSearch-2.6.0-00bfb3?style=flat&logo=elastic-stack)](https://github.com/opensearch-project)
 
 <img width="1000" alt="image" src="https://user-images.githubusercontent.com/52993842/233903291-9381a0af-9ffb-49d5-8661-a97d428b118c.png">
 
@@ -12,7 +12,8 @@ Docker images:
 * [mysqld-exporter](https://hub.docker.com/r/prom/mysqld-exporter/)
 * [prometheus](https://hub.docker.com/r/prom/prometheus)
 * [grafana](https://hub.docker.com/r/grafana/grafana)
-
+* [opensearch](https://hub.docker.com/r/opensearchproject/opensearch)
+ 
 ---
 
 
@@ -28,6 +29,8 @@ By default, the stack exposes the following ports:
 * 9104: db-exporter
 * 9094: prometheus
 * 9095: grafana
+* 9200: OpenSearch HTTP
+* 9600: OpenSearch TCP transport
 
 ## Usage
 
@@ -68,7 +71,7 @@ docker-compose down -v
 
 #Tools License
 
-- [grafana License - AGPL](https://hub.docker.com/r/prom/mysqld-exporter/)
+- [grafana License - AGPL](https://grafana.com/licensing/)
 - [prometheus License - Apache 2.0](https://github.com/prometheus/prometheus/blob/main/LICENSE)
 - [mysqld_exporter License - Apache 2.0](https://github.com/prometheus/mysqld_exporter/blob/main/LICENSE)
 
