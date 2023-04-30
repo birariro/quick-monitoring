@@ -85,7 +85,7 @@ services:
       - "9200:9200"
       - "9600:9600" # required for Performance Analyzer
     networks:
-      - opensearch-net
+      - dm-net
 
   opensearch-node2:
     container_name: opensearch-node2
@@ -110,4 +110,21 @@ services:
     volumes:
       - opensearch-data2:/usr/share/opensearch/data
     networks:
-      - opensearch-net
+      - dm-net
+
+  opensearch-dashboards:
+    container_name: opensearch-dashboards
+    build:
+      context: dashboards/
+      args:
+        OPEN_SEARCH_VERSION: ${OPEN_SEARCH_VERSION}
+    ports:
+      - "5601:5601"
+    expose:
+      - "5601"
+    environment:
+      OPENSEARCH_HOSTS: '["https://opensearch-node1:9200","https://opensearch-node2:9200"]'
+    #      OPENSEARCH_SYSTEM_ID: my_system_id
+    #      OPENSEARCH_SYSTEM_PASSWORD: my_system_password
+    networks:
+      - dm-net
