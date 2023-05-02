@@ -4,7 +4,7 @@
 [![version](https://img.shields.io/badge/grafana-latest-00bfb3?style=flat&logo=grafana)](https://github.com/grafana/grafana)
 [![version](https://img.shields.io/badge/OpenSearch-2.6.0-00bfb3?style=flat&logo=elastic-stack)](https://github.com/opensearch-project)
 
-<img width="1000" alt="image" src="https://user-images.githubusercontent.com/52993842/233903291-9381a0af-9ffb-49d5-8661-a97d428b118c.png">
+<img width="1000" alt="image" src="https://user-images.githubusercontent.com/52993842/235631888-3a50563b-8f97-4674-b148-d654f24027fe.png">
 
 
 Docker images:
@@ -29,8 +29,9 @@ By default, the stack exposes the following ports:
 * 9104: db-exporter
 * 9094: prometheus
 * 9095: grafana
-* 9200: OpenSearch HTTP
-* 9600: OpenSearch TCP transport
+* 9200: openSearch HTTP
+* 9600: openSearch TCP transport
+* 5601: dashboard
 
 ## Usage
 
@@ -39,7 +40,7 @@ By default, the stack exposes the following ports:
 Clone this repository onto the Docker host that will run the stack with the command below:
 
 ```sh
-git clone https://github.com/k4keye/docker-monitoring.git
+git clone https://github.com/k4keye/quick-monitoring.git
 ```
 
 Then, start the stack components locally with Docker Compose:
